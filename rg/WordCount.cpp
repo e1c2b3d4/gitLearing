@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main()
 {
 	//输入字符串
-	char str;
+	FILE *p = fopen("C:\\git\\Git\\repository\\test\\rg\\Debug\\input.txt","r");
 
 	int flag = 0;
+	char str;
 	int chanum = 0,wornum = 0;
-	while (str=getchar()) {
+	while (str=fgetc(p) != EOF) {
 		if(str) {
 			chanum++;
 			flag = 1;
@@ -24,9 +26,10 @@ int main()
 			break;
 		}
 	}
+	fclose(p);
 	
 	//加上最后的换行符
-	printf("字符数:%d\n",chanum);
+	printf("字符数:%d\n",chanum+1);
 	printf("单词数:%d\n",wornum);
 	
     return 0;
